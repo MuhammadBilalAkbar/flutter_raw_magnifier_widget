@@ -30,7 +30,8 @@
 **Great Features**
 
 - It is a common base class for magnifiers.
-- You can find more at [api.flutter.dev](https://api.flutter.dev/flutter/widgets/RawMagnifier-class.html).
+- You can find more
+  at [api.flutter.dev](https://api.flutter.dev/flutter/widgets/RawMagnifier-class.html).
 
 **Problems from Videos**
 
@@ -51,44 +52,61 @@
 **The Structured Main Content**
 
 1. In `main.dart`, theme properties are set.
-2. In `my_homepage.dart`, initialize Offset named dragGesturePosition. Offset is an immutable 2D floating-point offset.
+2. In `my_homepage.dart`, initialize Offset named dragGesturePosition. Offset is an immutable 2D
+   floating-point offset.
+
 ```dart
-  var dragGesturePosition = Offset.zero;
+
+var dragGesturePosition = Offset.zero;
 ```
+
 Offsets can be explained in two ways:
-- As representing a point in Cartesian space a specified distance from a separately-maintained origin.
+
+- As representing a point in Cartesian space a specified distance from a separately-maintained
+  origin.
 - As a vector that can be applied to coordinates.
+
 3. `scaffold` contains `column` and `column` contains `stack`. `stack` contains two children:
+
 - `GestureDetector` with child as `column` containing `Text` and `FlutterLogo`.
+
 ```dart
-                    GestureDetector(
-                      onPanUpdate: (details) => setState(() {
-                        dragGesturePosition = details.localPosition;
-                      }),
-                      child: Column(
-                        children: const [
-                          Text('Drag on the logo!'),
-                          SizedBox(height: 20),
-                          FlutterLogo(size: 200),
-                        ],
-                      ),
-                    ),
+                    GestureDetector
+(
+onPanUpdate: (details) => setState(() {
+dragGesturePosition = details.localPosition;
+}),
+child: Column(
+children: const [
+Text('Drag on the logo!'),
+SizedBox(height: 20),
+FlutterLogo(size: 200),
+]
+,
+)
+,
+)
+,
 ```
+`onPanUpdate` is a pointer that is in contact with the screen with a primary button and updates `DragUpdateDetails` using `setState`.
+
 - `Positioned` widget containing `RawMagnifier`.
+
 ```dart
-                    Positioned(
-                      left: dragGesturePosition.dx,
-                      top: dragGesturePosition.dy,
-                      child: const RawMagnifier(
-                        size: Size(200, 200),
-                        decoration: MagnifierDecoration(
-                          opacity: 1,
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.pink, width: 3),
-                          ),
-                        ),
-                        focalPointOffset: Offset.zero,
-                        magnificationScale: 2,
-                      ),
-                    ),
+                    Positioned
+(
+left: dragGesturePosition.dx,
+top: dragGesturePosition.dy,
+child: const RawMagnifier(
+size: Size(200, 200),
+decoration: MagnifierDecoration(
+opacity: 1,
+shape: RoundedRectangleBorder(
+side: BorderSide(color: Colors.pink, width: 3),
+),
+),
+focalPointOffset: Offset.zero,
+magnificationScale: 2,
+),
+),
 ```
