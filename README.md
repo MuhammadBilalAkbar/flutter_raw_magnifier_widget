@@ -70,43 +70,61 @@ Offsets can be explained in two ways:
 
 - `GestureDetector` with child as `column` containing `Text` and `FlutterLogo`.
 
-```dart
-                    GestureDetector
-(
-onPanUpdate: (details) => setState(() {
-dragGesturePosition = details.localPosition;
-}),
-child: Column(
-children: const [
-Text('Drag on the logo!'),
-SizedBox(height: 20),
-FlutterLogo(size: 200),
-]
-,
-)
-,
-)
-,
+```dart 
+                    GestureDetector(
+                      onPanUpdate: (details) => setState(() {
+                        dragGesturePosition = details.localPosition;
+                      }),
+                      child: Column(
+                        children: const [
+                          Text('Drag on the logo!'),
+                          SizedBox(height: 20),
+                          FlutterLogo(size: 200),
+                        ],
+                      ),
+                    ),
 ```
-`onPanUpdate` is a pointer that is in contact with the screen with a primary button and updates `DragUpdateDetails` using `setState`.
+
+`onPanUpdate` is a pointer that is in contact with the screen with a primary button and
+updates `DragUpdateDetails` by changing state `dragGesturePosition` to `details.localPosition;`.
+<br/> The local position in the coordinate system of the event receiver at which the pointer
+contacted the screen.
 
 - `Positioned` widget containing `RawMagnifier`.
 
-```dart
-                    Positioned
-(
-left: dragGesturePosition.dx,
-top: dragGesturePosition.dy,
-child: const RawMagnifier(
-size: Size(200, 200),
-decoration: MagnifierDecoration(
-opacity: 1,
-shape: RoundedRectangleBorder(
-side: BorderSide(color: Colors.pink, width: 3),
-),
-),
-focalPointOffset: Offset.zero,
-magnificationScale: 2,
-),
-),
+```dart 
+                    Positioned(
+                      left: dragGesturePosition.dx,
+                      top: dragGesturePosition.dy,
+                      child: const RawMagnifier(
+                        size: Size(200, 200),
+                        decoration: MagnifierDecoration(
+                          opacity: 1,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.pink, width: 3),
+                          ),
+                        ),
+                        focalPointOffset: Offset.zero,
+                        magnificationScale: 2,
+                      ),
+                    ),
 ```
+
+RawMagnifier properties:
+
+```dart 
+  const RawMagnifier({
+      super.key,
+      this.child,
+      this.decoration = const MagnifierDecoration(),
+      this.focalPointOffset = Offset.zero,
+      this.magnificationScale = 1,
+      required this.size,
+      })
+```
+
+Size is the size of the magnifier.
+<br/>focalPointOffset is offset of the magnifier from RawMagnifier's center.
+<br/>magnificationScale is How "zoomed in" the magnification subject is in the lens.
+<br/>decoration is decoration of magnifier. It has opacity, shape and shadows property.
+<br/>Shape can be set to RoundedRectangleBorder, OvalBorder, BeveledRectangleBorder, StadiumBorder, StarBorder, OutlineInputBorder and many others.
