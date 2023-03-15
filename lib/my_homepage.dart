@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
-  static const loopSize = Size(200, 200);
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
