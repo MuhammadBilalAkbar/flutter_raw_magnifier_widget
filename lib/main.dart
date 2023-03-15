@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         home: const MyHomePage(),
         theme: ThemeData(
             textTheme: const TextTheme(
-              bodyMedium: TextStyle(fontSize: 30),
+              bodyMedium: TextStyle(fontSize: 20),
             ),
             appBarTheme: const AppBarTheme(
               centerTitle: true,

@@ -10,8 +10,8 @@
 
 **Flutter Videos/Articles**
 
-- _[Add here the high ranking video links that have many views, or are ranked high on YouTube, Google ...]_
-- _[e.g. 380K: https://www.youtube.com/watch?v=Nl54MJDR2p8]_
+- 36K: https://www.youtube.com/watch?v=YBRkVCRP1Gw
+- https://api.flutter.dev/flutter/widgets/RawMagnifier-class.html
 
 **Android/Swift/React Videos**
 

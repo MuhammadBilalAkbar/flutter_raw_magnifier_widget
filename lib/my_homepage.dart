@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
-  static const Size loopSize = Size(200, 200);
+  static const loopSize = Size(200, 200);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -41,15 +41,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         left: dragGesturePosition.dx,
                         top: dragGesturePosition.dy,
                         child: const RawMagnifier(
-                          size: Size(300, 300),
+                          size: Size(200, 200),
                           decoration: MagnifierDecoration(
                             opacity: 1,
-                            shape: CircleBorder(
+                            shape: RoundedRectangleBorder(
                               side: BorderSide(color: Colors.pink, width: 3),
                             ),
                           ),
                           focalPointOffset: Offset.zero,
-                          magnificationScale: 3,
+                          magnificationScale: 2,
                         ),
                       ),
                     ],
